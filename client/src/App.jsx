@@ -3,8 +3,7 @@ import ArticleList from './ArticleList';
 
 function App() {
   const [articles, setArticles] = useState([]);
-  const [editedArticle, seteditedArticle]= useState([])
-
+  const []
 
   useEffect(() => {
     fetch('http://127.0.0.1:5000/get')
@@ -19,13 +18,25 @@ function App() {
   }, []); // Empty dependency array ensures the effect runs only once after the initial render
 
   const editArticle = (article) => {
-    editedArticle(article);
+    // Implement your edit logic here
+  };
+
+  const deleteArticle = (id) => {
+    fetch(`http://127.0.0.1:5000/delete/${id}`, {
+      method: 'DELETE',
+    })
+      .then(() => {
+        setArticles(articles.filter(article => article.id !== id)); // Update state to remove deleted article
+      })
+      .catch(error => {
+        console.error('Error:', error);
+      });
   };
 
   return (
     <div>
       <h1>Articles</h1>
-      <ArticleList articles={articles} />
+      <ArticleList articles={articles} editArticle={editArticle} deleteArticle={deleteArticle} />
     </div>
   );
 }
