@@ -1,8 +1,9 @@
 from flask import Flask, request, jsonify
 from flask_sqlalchemy import SQLAlchemy
-import datetime
 from flask_migrate import Migrate
 from flask_cors import CORS
+import datetime
+from models import BlogModel, db
 
 app = Flask(__name__)
 CORS(app)
@@ -30,6 +31,51 @@ def article_to_dict(article):
         'body': article.body,
         'date': article.date.strftime('%Y-%m-%d %H:%M:%S')
     }
+
+@app.route('/create_blog', methods=['POST'])
+def create_blog():
+    data = request.json  
+    new_blog = BlogModel(
+        id=data['id'],
+        title=data['title'],
+        thumbnail=data['thumbnail'],
+        content=data['content'],
+        tag=data['tag'],
+        name=data['name'],
+        authorid=data['authorid']
+    )
+    db.session.add(new_blog)
+    db.session.commit()
+    return 'Blog created successfully'
+
+if __name__ == '__main__':
+    app.run(debug=True)
+
+@app.route('/blogs', methods=['GET'])
+def get_blogs():
+    blogs = BlogModel.query.all()
+    blog_data = [{'title': blog.title, 'createdon': blog.createdon} for blog in blogs]
+    return {'blogs': blog_data}
+
+@app.route('/update_blog', methods=['PUT'])
+def update_blog():
+    data = request.json  
+    blog_to_update = BlogModel.query.filter_by(id=data['id']).first()
+    if blog_to_update:
+        blog_to_update.title = data['title']
+        db.session.commit()
+        return 'Blog updated successfully'
+    return 'Blog not found', 404
+
+@app.route('/delete_blog', methods=['DELETE'])
+def delete_blog():
+    blog_id = request.args.get('id')
+    blog_to_delete = BlogModel.query.filter_by(id=blog_id).first()
+    if blog_to_delete:
+        db.session.delete(blog_to_delete)
+        db.session.commit()
+        return 'Blog deleted successfully'
+    return 'Blog not found', 404
 
 @app.route('/get', methods=['GET'])
 def get_articles():
