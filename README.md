@@ -37,7 +37,7 @@ Start the frontend development server:
 bash
 Copy code
 cd ../frontend npm start
-The frontend will be accessible at http://localhost:3000.
+The frontend will be accessible at http://localhost:5173
 Start the backend Flask server:
 bash
 Copy code
