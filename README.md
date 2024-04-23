@@ -19,7 +19,11 @@ Flask JWT Extended
 Clone the repository:
 bash
 Copy code
+
+git clone https://github.com/ngigi1234/Blog-App-Front-End-
+
 git clone https://github.com/your-username/blog-app.git
+main
 Install frontend dependencies:
 bash
 Copy code
@@ -45,4 +49,8 @@ Contributing
 Contributions are welcome! Please fork the repository and submit a pull request.
 
 ## Acknowledgement
+
 To my group members, Allan, Louis, Vinnicent, Francis and Mbuvi, for their contributions and support throughout the development of this project.
+
+To my group members, Allan, Louis, Vinnicent, Francis and Mbuvi, for their contributions and support throughout the development of this project.
+main
