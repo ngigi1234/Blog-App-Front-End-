@@ -4,9 +4,9 @@ import axios from 'axios';
 import App from './App';
 
 function Authentication({ onAuthenticated }) {
-    const [userCredential, setUserCredential] = useState({});
-    const [error, setError] = useState('');
-    const [loginType, setLoginType] = useState('login');
+    const [userCredential, setUserCredential] =  useState({});
+    const [error, setError] =  useState('');
+    const [loginType, setLoginType] =  useState('login');
     const [authenticated, setAuthenticated] = useState(false);
 
     function handleCredentials(e) {
