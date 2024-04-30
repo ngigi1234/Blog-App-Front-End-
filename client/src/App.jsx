@@ -384,7 +384,7 @@
 //     async function handleLoginOrSignUp() {
 //         const { email, password } = userCredential;
 //         try {
-//             const response = await axios.post(`http://localhost:5000/${loginType}`, { email, password });
+//             const response = await axios.post(`https://front-tan-xi.vercel.app/${loginType}`, { email, password });
 //             const token = response.data.token;
 //             localStorage.setItem('token', token);
 //             setAuthenticated(true);

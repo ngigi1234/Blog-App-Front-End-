@@ -11,7 +11,7 @@ export default class APIService {
     }
 
     static InsertArticle(body) {
-        return fetch(`http://localhost:5000/add`, {
+        return fetch(`https://front-tan-xi.vercel.app/add`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
