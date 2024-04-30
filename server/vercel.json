@@ -1,24 +1,12 @@
 {
-    "functions": {
-      "api/update-article": {
-        "runtime": "python3.12",
-        "handler": "app.update_article"
-      },
-      "api/insert-article": {
-        "runtime": "python3.12",
-        "handler": "app.insert_article"
-      },
-      "api/delete-article": {
-        "runtime": "python3.12",
-        "handler": "app.delete_article"
-      }
-    },
+    "rewrites": [
+      { "source": "/api/(.*)", "destination": "/api/app.py" },
+      { "source": "/(.*)", "destination": "/app.py" }
+    ],
     "routes": [
       { "src": "/api/update-article", "dest": "api/update-article" },
       { "src": "/api/insert-article", "dest": "api/insert-article" },
-      { "src": "/api/delete-article", "dest": "api/delete-article" },
-      { "src": "/api/(.*)", "dest": "api/app.py" },
-      { "src": "/(.*)", "dest": "app.py" }
+      { "src": "/api/delete-article", "dest": "api/delete-article" }
     ]
   }
   
