@@ -1,12 +1,6 @@
 {
-    "rewrites": [
-      { "source": "/api/(.*)", "destination": "/api/app.py" },
-      { "source": "/(.*)", "destination": "/app.py" }
-    ],
-    "routes": [
-      { "src": "/api/update-article", "dest": "api/update-article" },
-      { "src": "/api/insert-article", "dest": "api/insert-article" },
-      { "src": "/api/delete-article", "dest": "api/delete-article" }
-    ]
-  }
-  
+  "version": 2,
+  "routes": [
+      {"src": "/(.*)", "dest": "app.py"}
+  ]
+}
